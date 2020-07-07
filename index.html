@@ -147,11 +147,67 @@
     
     <div class="row">
         <div class="mw">
-        <input type="submit" value="Submit">
+        <input type="submit" value="Submit" onclick="fun()">
+        <input type="reset" value="Reset">
     </div>
       </div>
+      
     </form>
     </div>
+    <script>
+        function fun()
+        {
+            var str=$("#preset").val();
+            if(str[0]=='H'||str[0]=='h'||str[0]=='E'||str[0]=='e'||str[0]=='M'||str[0]=='m'||str[0]=='P'||str[0]=='p'||str[0]=='G'||str[0]=='g'||str[0]=='T'||str[0]=='t'||str[0]=='R'||str[0]=='r'||str[0]=='B'||str[0]=='b')
+            t1=1;
+            else
+            {
+                alert("wrong subject entered");
+                event.preventDefault();
+            }
+            if(str[1]=='H'||str[1]=='h'||str[1]=='C'||str[0]=='c'&&t1==1)
+            t2=1;
+            else if(t1==1)
+            {
+                alert("wrong hw/cw selected");
+                event.preventDefault();
+            }
+            if(str[2]=='U'||str[2]=='U'||str[2]=='n'||str[2]=='N'||str[2]=='L'||str[2]=='l'&&t1==1&&t2==1)
+            t3=1;
+            else if(t1==1&&t2==1)
+            {
+                alert("wrong class choose");
+                event.preventDefault();
+            }
+            var a=parseInt(str[3]);
+            var b=parseInt(str[4]);
+            var c=parseInt(str[5]);
+            var d=parseInt(str[6]);
+            if(str[3]==1&&str[4]<=8&&str[5]<=8&&str[6]<=8&&(a+b+c+d==9)&&t1==1&&t2==1&&t3==1)
+            t4=1
+            else if(t1==1&&t2==1&&t3==1)
+            {
+                alert("wrong number of lines enterd");
+                event.preventDefault();
+            }
+            if(t1==0||t2==0||t3==0||t4==0)
+            event.preventDefault();
+            if(t1==1&&t2==1&&t3==1&&t4==1)
+            {
+                var selectedText1 = $("#sub").find("option:selected").text();
+                var selectedText2 = $("#work").find("option:selected").text();
+                var selectedText3 = $("#class").find("option:selected").text();
+                var selectedText4 = $("#dot").find("option:selected").text();
+                var selectedText5 = $("#guid").find("option:selected").text();
+                var selectedText6 = $("#blank").find("option:selected").text();
+                str=selectedText1[0]+selectedText2[0]+selectedText3[0]+"1"+selectedText4[0]+selectedText5[0]+selectedText6[0];
+                document.getElementById("preset").value = str;
+                var r=confirm("Preset value is "+str);
+                if(r==false)
+                event.preventDefault();
+            }
+        }
+    </script>
    <script>
        function myfunction()
        {    
@@ -160,27 +216,43 @@
             if(str[0]=='H'||str[0]=='h'||str[0]=='E'||str[0]=='e'||str[0]=='M'||str[0]=='m'||str[0]=='P'||str[0]=='p'||str[0]=='G'||str[0]=='g'||str[0]=='T'||str[0]=='t'||str[0]=='R'||str[0]=='r'||str[0]=='B'||str[0]=='b')
             t1=1;
             else
+            {
             alert("wrong subject entered");
+            return false;
+            }
             if(str[1]=='H'||str[1]=='h'||str[1]=='C'||str[0]=='c')
             t2=1;
-            else
+            else{
             alert("wrong hw/cw selected");
+            return false;
+            }
             if(str[2]=='U'||str[2]=='U'||str[2]=='n'||str[2]=='N'||str[2]=='L'||str[2]=='l')
             t3=1;
-            else
-            alert("wrong class choose");
+            else{
+            alert("wrong class choose");return false;
+            }
             var a=parseInt(str[3]);
             var b=parseInt(str[4]);
             var c=parseInt(str[5]);
             var d=parseInt(str[6]);
-            if(str[3]==1&&str[4]<=8&&str[5]<=7&&str[6]<=6&&(a+b+c+d<=9))
+            if(str[3]==1&&str[4]<=8&&str[5]<=8&&str[6]<=8&&(a+b+c+d==9))
             t4=1
             else
+            {
             alert("wrong number of lines enterd");
-
-    
+            return false;
+            }
+            if(t1==0||t2==0||t3==0||t4==0)
+            return false;
 
             if(t1=1&&t2==1&&t3==1&&t4==1){
+                $("#sub option[value='dem1']").attr("disabled","disabled");
+$("#work option[value='dem2']").attr("disabled","disabled");
+$("#class option[value='dem3']").attr("disabled","disabled");
+$("#dot option[value='dem4']").attr("disabled","disabled");
+$("#guid option[value='dem5']").attr("disabled","disabled");
+$("#blank option[value='dem6']").attr("disabled","disabled");
+
             if(str[0]=='E'||str[0]=='e')
             $("#sub").val("english");
             else if(str[0]=='H'||str[0]=='h')
@@ -271,6 +343,8 @@
     $(function () {
     
         $("#work").click(function () {var selectedValue = $("#sub").val();
+        $("#sub option[value='dem1']").attr("disabled","disabled");
+        $("#work option[value='dem2']").attr("disabled","disabled");
             if(selectedValue=="dem1")
             {
                 alert("Fill the subject field first");
@@ -286,6 +360,7 @@
         $("#class").click(function () {
             var selectedValue = $("#sub").val();
             var selectedValue1 = $("#work").val();
+            $("#class option[value='dem3']").attr("disabled","disabled");
             if(selectedValue=="dem1"||selectedValue1=="dem2")
             {
                 alert("Fill the above fileds first");
@@ -371,8 +446,13 @@
                 $("#guid").val(8-i);
                 $("#blank").val("0");
                 var j='8';
+               
+                $("#dot option[value='dem4']").attr("disabled","disabled");
+                $("#guid option[value='dem5']").attr("disabled","disabled");
+                $("#blank option[value='dem6']").attr("disabled","disabled");
                 if(i==8)
                 {
+                    
                     $("#guid option[value='1']").attr("disabled","disabled");
                     $("#guid option[value='2']").attr("disabled","disabled");
                     $("#guid option[value='3']").attr("disabled","disabled");
@@ -484,8 +564,8 @@
             i1=parseInt(selectedText1);
             i2=parseInt(selectedText2);
             $("#blank").val(8-(i1+i2));
-            if(i1+i2==8)
-            {
+            
+                    $("#blank option[value='0']").attr("disabled","disabled");
                     $("#blank option[value='1']").attr("disabled","disabled");
                     $("#blank option[value='2']").attr("disabled","disabled");
                     $("#blank option[value='3']").attr("disabled","disabled");
@@ -494,77 +574,11 @@
                     $("#blank option[value='6']").attr("disabled","disabled");
                     $("#blank option[value='7']").attr("disabled","disabled");
                     $("#blank option[value='8']").attr("disabled","disabled");
-            }
-            else if(i1+i2==7)
-            {
-                $("#blank option[value='2']").attr("disabled","disabled");
-                    $("#blank option[value='3']").attr("disabled","disabled");
-                    $("#blank option[value='4']").attr("disabled","disabled");
-                    $("#blank option[value='5']").attr("disabled","disabled");
-                    $("#blank option[value='6']").attr("disabled","disabled");
-                    $("#blank option[value='7']").attr("disabled","disabled");
-                    $("#blank option[value='8']").attr("disabled","disabled");
+            
+        });
+    });
+</script>
 
-            }
-            else if(i1+i2==6)
-            {
-                $("#blank option[value='3']").attr("disabled","disabled");
-                    $("#blank option[value='4']").attr("disabled","disabled");
-                    $("#blank option[value='5']").attr("disabled","disabled");
-                    $("#blank option[value='6']").attr("disabled","disabled");
-                    $("#blank option[value='7']").attr("disabled","disabled");
-                    $("#blank option[value='8']").attr("disabled","disabled");
-            }
-            else if(i1+i2==5)
-            {
-                $("#blank option[value='4']").attr("disabled","disabled");
-                    $("#blank option[value='5']").attr("disabled","disabled");
-                    $("#blank option[value='6']").attr("disabled","disabled");
-                    $("#blank option[value='7']").attr("disabled","disabled");
-                    $("#blank option[value='8']").attr("disabled","disabled");
-                
-            }
-            else if(i1+i2==4)
-            {
-                $("#blank option[value='5']").attr("disabled","disabled");
-                    $("#blank option[value='6']").attr("disabled","disabled");
-                    $("#blank option[value='7']").attr("disabled","disabled");
-                    $("#blank option[value='8']").attr("disabled","disabled");
-            }
-            else if(i1+i2==3)
-            {
-                $("#blank option[value='6']").attr("disabled","disabled");
-                    $("#blank option[value='7']").attr("disabled","disabled");
-                    $("#blank option[value='8']").attr("disabled","disabled");
-            }
-            else if(i1+i2==2)
-            {
-                $("#blank option[value='7']").attr("disabled","disabled");
-                    $("#blank option[value='8']").attr("disabled","disabled");
-                
-            }
-            else if(i1+i2==1)
-            {
-              
-                    $("#blank option[value='8']").attr("disabled","disabled");
-            }
-        });
-    });
-</script>
-<script type="text/javascript">
-    $(function () {
-        temp=0;
-        $("#blank").change(function (){
-            var selectedText1 = $("#sub").find("option:selected").text();
-            var selectedText2 = $("#work").find("option:selected").text();
-            var selectedText3 = $("#class").find("option:selected").text();
-            var selectedText4 = $("#dot").find("option:selected").text();
-            var selectedText5 = $("#guid").find("option:selected").text();
-            var selectedText6 = $(this).find("option:selected").text();
-            str=selectedText1[0]+selectedText2[0]+selectedText3[0]+"1"+selectedText4[0]+selectedText5[0]+selectedText6[0];
-            document.getElementById("preset").value = str;
-        });
-    });
-</script>
+
     </body>
     </html>
