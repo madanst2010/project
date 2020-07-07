@@ -3,7 +3,7 @@
  <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
  </head>
- <link rel="stylesheet" href="m.css">
+ <link rel="stylesheet" href="m1.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
         $(document).ready(function(){
@@ -11,6 +11,7 @@
             myfunction();
           });
         });
+      
         </script>
         
 
@@ -18,7 +19,7 @@
     <body>
        
         <div class="container">
-        <form action="/action_page.php">
+        <form action="display.html" method="post">
             <div class="row">
                 <div class="col-25">
                     <label for="preset1">Preset Name</label>
@@ -33,7 +34,7 @@
             </div>
             <div class="col-75">
                 <select id="sub" name="subject">
-                    <option value="dem" >Select Subject</option>
+                    <option value="dem1" >Select Subject</option>
                     <option value="hindi" >Hindi</option>
                     <option value="english" >English</option>
                     <option value="maths">Maths</option>
@@ -48,24 +49,11 @@
         </div>
         <div class="row">
             <div class="col-25">
-                <label for="class">Class *</label>
-            </div>
-            <div class="col-75">
-                <select id="class" name="class">
-                    <option value="dem" >Select Class</option>
-                    <option value="nursery">Nursery</option>
-                    <option value="lkg">LKG</option>
-                    <option value="ukg">UKG</option>
-                </select>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-25">
                 <label for="work">CW/HW *</label>
             </div>
             <div class="col-75">
                 <select id="work" name="work">
-                    <option value="dem" >Select Type Of Work</option>
+                    <option value="dem2" >Select Type Of Work</option>
                     <option value="cw" >CW</option>
                     <option value="hw" >HW</option>
                     
@@ -73,6 +61,20 @@
                 </select>
             </div>
         </div>
+        <div class="row">
+            <div class="col-25">
+                <label for="class">Class *</label>
+            </div>
+            <div class="col-75">
+                <select id="class" name="class">
+                    <option value="dem3" >Select Class</option>
+                    <option value="nursery">Nursery</option>
+                    <option value="lkg">LKG</option>
+                    <option value="ukg">UKG</option>
+                </select>
+            </div>
+        </div>
+        
     
         <div class="row">
             <div class="col-25">
@@ -91,7 +93,7 @@
                 </div>
             <div class="col-75">
                 <select id="dot" name="dot">
-                    <option value="selct">Select Lines</option>
+                    <option value="dem4">Select Lines</option>
                     <option value="0" onclick="my">0</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -110,7 +112,7 @@
             </div>
         <div class="col-75">
             <select id="guid" name="guid">
-                <option value="selct">Select Lines</option>
+                <option value="dem5">Select Lines</option>
                 <option value="0">0</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
@@ -119,6 +121,7 @@
                 <option value="5">5</option>
                 <option value="6">6</option>
                 <option value="7">7</option> 
+                <option value="8">8</option>
             </select>
         </div>
       </div>
@@ -128,7 +131,7 @@
         </div>
         <div class="col-75">
             <select id="blank" name="blank">
-                <option value="selct">Select Lines</option>
+                <option value="dem6">Select Lines</option>
                 <option value="0">0</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -136,12 +139,16 @@
                     <option value="4">4</option>
                     <option value="5">5</option>
                     <option value="6">6</option>
+                    <option value="7">7</option> 
+                    <option value="8">8</option>
             </select>
         </div>
     </div>
     
     <div class="row">
+        <div class="mw">
         <input type="submit" value="Submit">
+    </div>
       </div>
     </form>
     </div>
@@ -234,6 +241,8 @@
             $("#guid").val("6");
             else if(str[5]=='7')
             $("guid").val("7");
+            else if(str[5]=='8')
+            $("guid").val("8");
             if(str[5]=='0')
             $("#guid").val("0");
             if(str[6]=='0')
@@ -250,8 +259,312 @@
             $("#blank").val("5");
             else if(str[6]=='6')
             $("#blank").val("6");
+            else if(str[6]=='7')
+            $("#blank").val("7");
+            else if(str[6]=='8')
+            $("#blank").val("8");
             }
        }
    </script>
+   
+<script type="text/javascript">
+    $(function () {
+    
+        $("#work").click(function () {var selectedValue = $("#sub").val();
+            if(selectedValue=="dem1")
+            {
+                alert("Fill the subject field first");
+                return false;
+            }
+            
+        });
+    });
+</script>
+<script type="text/javascript">
+    $(function () {
+        temp=0;
+        $("#class").click(function () {
+            var selectedValue = $("#sub").val();
+            var selectedValue1 = $("#work").val();
+            if(selectedValue=="dem1"||selectedValue1=="dem2")
+            {
+                alert("Fill the above fileds first");
+                return false;
+            }
+            
+        });
+    });
+</script>
+<script type="text/javascript">
+    $(function () {
+        
+        $("#dot").click(function () {
+            var selectedValue = $("#sub").val();
+            var selectedValue1 = $("#work").val();
+            var selectedValue2 = $("#class").val();
+            if(selectedValue=="dem1"||selectedValue1=="dem2"||selectedValue2=="dem3")
+            {
+                alert("Fill the above fileds first");
+                return false;
+            }
+            
+        });
+    });
+</script>
+<script type="text/javascript">
+    $(function () {
+      
+        $("#guid").click(function () {
+            var selectedValue = $("#sub").val();
+            var selectedValue1 = $("#work").val();
+            var selectedValue2 = $("#class").val();
+            var selectedValue3 = $("#dot").val();
+            if(selectedValue=="dem1"||selectedValue1=="dem2"||selectedValue2=="dem3"||selectedValue3=="dem4")
+            {
+                alert("Fill the above fileds first");
+                return false;
+            }
+            
+        });
+    });
+</script>
+<script type="text/javascript">
+    $(function () {
+      
+        $("#blank").click(function () {
+            
+            var selectedValue = $("#sub").val();
+           var selectedValue1 = $("#work").val();
+            var selectedValue2 = $("#class").val();
+            var selectedValue3 = $("#dot").val();
+            var selectedValue4 = $("#guid").val();
+            if(selectedValue=="dem1"||selectedValue1=="dem2"||selectedValue2=="dem3"||selectedValue3=="dem4"||selectedValue4=="dem5")
+            {
+                alert("Fill the above fileds first");
+                return false;
+            }
+            
+        });
+    });
+</script>
+
+
+
+
+
+
+
+
+
+            
+   
+    <script type="text/javascript">
+    $(function () {
+        temp=0;
+        $("#dot").change(function () {
+            
+            var selectedText = $(this).find("option:selected").text();
+            var i=parseInt(selectedText);
+
+            if(i>=0&&i<=8)
+            {
+                $("#guid").val(8-i);
+                $("#blank").val("0");
+                var j='8';
+                if(i==8)
+                {
+                    $("#guid option[value='1']").attr("disabled","disabled");
+                    $("#guid option[value='2']").attr("disabled","disabled");
+                    $("#guid option[value='3']").attr("disabled","disabled");
+                    $("#guid option[value='4']").attr("disabled","disabled");
+                    $("#guid option[value='5']").attr("disabled","disabled");
+                    $("#guid option[value='6']").attr("disabled","disabled");
+                    $("#guid option[value='7']").attr("disabled","disabled");
+                    $("#guid option[value='8']").attr("disabled","disabled");
+                    $("#blank option[value='1']").attr("disabled","disabled");
+                    $("#blank option[value='2']").attr("disabled","disabled");
+                    $("#blank option[value='3']").attr("disabled","disabled");
+                    $("#blank option[value='4']").attr("disabled","disabled");
+                    $("#blank option[value='5']").attr("disabled","disabled");
+                    $("#blank option[value='6']").attr("disabled","disabled");
+                    $("#blank option[value='7']").attr("disabled","disabled");
+                    $("#blank option[value='8']").attr("disabled","disabled");
+                }
+                else if(i==7)
+                {
+                    $("#guid option[value='2']").attr("disabled","disabled");
+                    $("#guid option[value='3']").attr("disabled","disabled");
+                    $("#guid option[value='4']").attr("disabled","disabled");
+                    $("#guid option[value='5']").attr("disabled","disabled");
+                    $("#guid option[value='6']").attr("disabled","disabled");
+                    $("#guid option[value='7']").attr("disabled","disabled");
+                    $("#guid option[value='8']").attr("disabled","disabled");
+                    $("#blank option[value='2']").attr("disabled","disabled");
+                    $("#blank option[value='3']").attr("disabled","disabled");
+                    $("#blank option[value='4']").attr("disabled","disabled");
+                    $("#blank option[value='5']").attr("disabled","disabled");
+                    $("#blank option[value='6']").attr("disabled","disabled");
+                    $("#blank option[value='7']").attr("disabled","disabled");
+                    $("#blank option[value='8']").attr("disabled","disabled");
+                }
+                else if(i==6)
+                {
+                    $("#guid option[value='3']").attr("disabled","disabled");
+                    $("#guid option[value='4']").attr("disabled","disabled");
+                    $("#guid option[value='5']").attr("disabled","disabled");
+                    $("#guid option[value='6']").attr("disabled","disabled");
+                    $("#guid option[value='7']").attr("disabled","disabled");
+                    $("#guid option[value='8']").attr("disabled","disabled");
+                    $("#blank option[value='3']").attr("disabled","disabled");
+                    $("#blank option[value='4']").attr("disabled","disabled");
+                    $("#blank option[value='5']").attr("disabled","disabled");
+                    $("#blank option[value='6']").attr("disabled","disabled");
+                    $("#blank option[value='7']").attr("disabled","disabled");
+                    $("#blank option[value='8']").attr("disabled","disabled");
+                }
+                else if(i==5)
+                {
+                    $("#guid option[value='4']").attr("disabled","disabled");
+                    $("#guid option[value='5']").attr("disabled","disabled");
+                    $("#guid option[value='6']").attr("disabled","disabled");
+                    $("#guid option[value='7']").attr("disabled","disabled");
+                    $("#guid option[value='8']").attr("disabled","disabled");
+                    $("#blank option[value='4']").attr("disabled","disabled");
+                    $("#blank option[value='5']").attr("disabled","disabled");
+                    $("#blank option[value='6']").attr("disabled","disabled");
+                    $("#blank option[value='7']").attr("disabled","disabled");
+                    $("#blank option[value='8']").attr("disabled","disabled");
+                }
+                else if(i==4)
+                {
+                    $("#guid option[value='5']").attr("disabled","disabled");
+                    $("#guid option[value='6']").attr("disabled","disabled");
+                    $("#guid option[value='7']").attr("disabled","disabled");
+                    $("#guid option[value='8']").attr("disabled","disabled");
+                    $("#blank option[value='5']").attr("disabled","disabled");
+                    $("#blank option[value='6']").attr("disabled","disabled");
+                    $("#blank option[value='7']").attr("disabled","disabled");
+                    $("#blank option[value='8']").attr("disabled","disabled");
+                }
+                else if(i==3)
+                {
+                    $("#guid option[value='6']").attr("disabled","disabled");
+                    $("#guid option[value='7']").attr("disabled","disabled");
+                    $("#guid option[value='8']").attr("disabled","disabled");
+                    $("#blank option[value='6']").attr("disabled","disabled");
+                    $("#blank option[value='7']").attr("disabled","disabled");
+                    $("#blank option[value='8']").attr("disabled","disabled");
+                }
+                else if(i==2)
+                {
+                    $("#guid option[value='7']").attr("disabled","disabled");
+                    $("#guid option[value='8']").attr("disabled","disabled");
+                    $("#blank option[value='7']").attr("disabled","disabled");
+                    $("#blank option[value='8']").attr("disabled","disabled");
+                }
+                else if(i==1)
+                {
+                    $("#guid option[value='8']").attr("disabled","disabled");
+                    $("#blank option[value='8']").attr("disabled","disabled");
+                }
+            }    
+                
+            
+            
+        });
+    });
+</script>
+<script type="text/javascript">
+    $(function () {
+     
+        $("#guid").change(function () {
+            temp=1;
+            var selectedText1 = $("#dot").find("option:selected").text();
+            var selectedText2 = $(this).find("option:selected").text();
+            i1=parseInt(selectedText1);
+            i2=parseInt(selectedText2);
+            $("#blank").val(8-(i1+i2));
+            if(i1+i2==8)
+            {
+                    $("#blank option[value='1']").attr("disabled","disabled");
+                    $("#blank option[value='2']").attr("disabled","disabled");
+                    $("#blank option[value='3']").attr("disabled","disabled");
+                    $("#blank option[value='4']").attr("disabled","disabled");
+                    $("#blank option[value='5']").attr("disabled","disabled");
+                    $("#blank option[value='6']").attr("disabled","disabled");
+                    $("#blank option[value='7']").attr("disabled","disabled");
+                    $("#blank option[value='8']").attr("disabled","disabled");
+            }
+            else if(i1+i2==7)
+            {
+                $("#blank option[value='2']").attr("disabled","disabled");
+                    $("#blank option[value='3']").attr("disabled","disabled");
+                    $("#blank option[value='4']").attr("disabled","disabled");
+                    $("#blank option[value='5']").attr("disabled","disabled");
+                    $("#blank option[value='6']").attr("disabled","disabled");
+                    $("#blank option[value='7']").attr("disabled","disabled");
+                    $("#blank option[value='8']").attr("disabled","disabled");
+
+            }
+            else if(i1+i2==6)
+            {
+                $("#blank option[value='3']").attr("disabled","disabled");
+                    $("#blank option[value='4']").attr("disabled","disabled");
+                    $("#blank option[value='5']").attr("disabled","disabled");
+                    $("#blank option[value='6']").attr("disabled","disabled");
+                    $("#blank option[value='7']").attr("disabled","disabled");
+                    $("#blank option[value='8']").attr("disabled","disabled");
+            }
+            else if(i1+i2==5)
+            {
+                $("#blank option[value='4']").attr("disabled","disabled");
+                    $("#blank option[value='5']").attr("disabled","disabled");
+                    $("#blank option[value='6']").attr("disabled","disabled");
+                    $("#blank option[value='7']").attr("disabled","disabled");
+                    $("#blank option[value='8']").attr("disabled","disabled");
+                
+            }
+            else if(i1+i2==4)
+            {
+                $("#blank option[value='5']").attr("disabled","disabled");
+                    $("#blank option[value='6']").attr("disabled","disabled");
+                    $("#blank option[value='7']").attr("disabled","disabled");
+                    $("#blank option[value='8']").attr("disabled","disabled");
+            }
+            else if(i1+i2==3)
+            {
+                $("#blank option[value='6']").attr("disabled","disabled");
+                    $("#blank option[value='7']").attr("disabled","disabled");
+                    $("#blank option[value='8']").attr("disabled","disabled");
+            }
+            else if(i1+i2==2)
+            {
+                $("#blank option[value='7']").attr("disabled","disabled");
+                    $("#blank option[value='8']").attr("disabled","disabled");
+                
+            }
+            else if(i1+i2==1)
+            {
+              
+                    $("#blank option[value='8']").attr("disabled","disabled");
+            }
+        });
+    });
+</script>
+<script type="text/javascript">
+    $(function () {
+        temp=0;
+        $("#blank").change(function (){
+            var selectedText1 = $("#sub").find("option:selected").text();
+            var selectedText2 = $("#work").find("option:selected").text();
+            var selectedText3 = $("#class").find("option:selected").text();
+            var selectedText4 = $("#dot").find("option:selected").text();
+            var selectedText5 = $("#guid").find("option:selected").text();
+            var selectedText6 = $(this).find("option:selected").text();
+            str=selectedText1[0]+selectedText2[0]+selectedText3[0]+"1"+selectedText4[0]+selectedText5[0]+selectedText6[0];
+            document.getElementById("preset").value = str;
+        });
+    });
+</script>
     </body>
     </html>
