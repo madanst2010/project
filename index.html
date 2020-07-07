@@ -221,24 +221,25 @@
             document.getElementById("preset").value="";
             
             }
-            if(str[1]=='H'||str[1]=='h'||str[1]=='C'||str[0]=='c')
+            if(str[1]=='H'||str[1]=='h'||str[1]=='C'||str[1]=='c'&&t1==1)
             t2=1;
-            else{
+            else if(t1==1){
             alert("wrong hw/cw selected");
             document.getElementById("preset").value="";
             }
-            if(str[2]=='U'||str[2]=='U'||str[2]=='n'||str[2]=='N'||str[2]=='L'||str[2]=='l')
+            if(str[2]=='U'||str[2]=='U'||str[2]=='n'||str[2]=='N'||str[2]=='L'||str[2]=='l'&&t1==1&&t2==1)
             t3=1;
-            else{
+            else if(t1==1&&t2==1)
+            {
             alert("wrong class choose"); document.getElementById("preset").value="";
             }
             var a=parseInt(str[3]);
             var b=parseInt(str[4]);
             var c=parseInt(str[5]);
             var d=parseInt(str[6]);
-            if(str[3]==1&&str[4]<=8&&str[5]<=8&&str[6]<=8&&(a+b+c+d==9))
+            if(str[3]==1&&str[4]<=8&&str[5]<=8&&str[6]<=8&&(a+b+c+d==9)&&t1==1&&t2==1&&t3==1)
             t4=1
-            else
+            else if(t1==1&&t2==1&&t3==1)
             {
             alert("wrong number of lines enterd");
             document.getElementById("preset").value="";
