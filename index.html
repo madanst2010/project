@@ -3,7 +3,7 @@
  <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
  </head>
- <link rel="stylesheet" href="m.css">
+ <link rel="stylesheet" href="m1.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
         $(document).ready(function(){
@@ -218,18 +218,19 @@
             else
             {
             alert("wrong subject entered");
-            return false;
+            document.getElementById("preset").value="";
+            
             }
             if(str[1]=='H'||str[1]=='h'||str[1]=='C'||str[0]=='c')
             t2=1;
             else{
             alert("wrong hw/cw selected");
-            return false;
+            document.getElementById("preset").value="";
             }
             if(str[2]=='U'||str[2]=='U'||str[2]=='n'||str[2]=='N'||str[2]=='L'||str[2]=='l')
             t3=1;
             else{
-            alert("wrong class choose");return false;
+            alert("wrong class choose"); document.getElementById("preset").value="";
             }
             var a=parseInt(str[3]);
             var b=parseInt(str[4]);
@@ -240,11 +241,10 @@
             else
             {
             alert("wrong number of lines enterd");
-            return false;
+            document.getElementById("preset").value="";
             }
             if(t1==0||t2==0||t3==0||t4==0)
-            return false;
-
+            document.getElementById("preset").value="";
             if(t1=1&&t2==1&&t3==1&&t4==1){
                 $("#sub option[value='dem1']").attr("disabled","disabled");
 $("#work option[value='dem2']").attr("disabled","disabled");
