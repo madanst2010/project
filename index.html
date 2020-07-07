@@ -579,6 +579,36 @@ $("#blank option[value='dem6']").attr("disabled","disabled");
     });
 </script>
 
+<script type="text/javascript">
+    $(function () {
+        temp=0;
+        $("#dot").change(function (){
+            var selectedText1 = $("#sub").find("option:selected").text();
+            var selectedText2 = $("#work").find("option:selected").text();
+            var selectedText3 = $("#class").find("option:selected").text();
+            var selectedText4 = $("#dot").find("option:selected").text();
+            var selectedText5 = $("#guid").find("option:selected").text();
+            var selectedText6 = $("#blank").find("option:selected").text();
+            str=selectedText1[0]+selectedText2[0]+selectedText3[0]+"1"+selectedText4[0]+selectedText5[0]+selectedText6[0];
+            document.getElementById("preset").value = str;
+        });
+    });
+</script>
+<script type="text/javascript">
+    $(function () {
+        temp=0;
+        $("#guid").change(function (){
+            var selectedText1 = $("#sub").find("option:selected").text();
+            var selectedText2 = $("#work").find("option:selected").text();
+            var selectedText3 = $("#class").find("option:selected").text();
+            var selectedText4 = $("#dot").find("option:selected").text();
+            var selectedText5 = $("#guid").find("option:selected").text();
+            var selectedText6 = $("#blank").find("option:selected").text();
+            str=selectedText1[0]+selectedText2[0]+selectedText3[0]+"1"+selectedText4[0]+selectedText5[0]+selectedText6[0];
+            document.getElementById("preset").value = str;
+        });
+    });
+</script>
 
     </body>
     </html>
